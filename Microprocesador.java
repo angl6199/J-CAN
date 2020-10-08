@@ -85,7 +85,87 @@ public class Microprocesador implements Comparable<Microprocesador>{
         this.completados = completados;
     }
     
-    
+    public void ejecutarProceso(Proceso p) { //process
+        // calcula tiempos, actualiza tiempo total de micro, guarda tiempo inicial y final de proceso, añade proceso a terminados
+        p.setTiempoInicial(this.duracion);
+        int tiempoProceso = 0; //pTime
+        if (!esVacio){
+            tiempoProceso += tcc;
+            p.setTcc(tcc);
+        }
+        tiempoProceso = tiempoProceso + p.getTe() + this.calcularTvc(p) + this.calcularBloqueo(p);
+        p.setTiempoTotal(tiempoProceso);
+        p.setTvc(this.calcularTvc(p));
+        p.setNumBloq(this.calcularBloqueo(p));
+        p.setTiempoFinal(p.getTiempoInicial() + tiempoProceso);
 
+        this.duracion += tiempoProceso;
+        this.completados.add(p);
+        this.setEsVacio(false);
+
+        
+    }
+
+    public void esperar(int tiempoEspera) { //wait  y timeToWait
+        // si la listaTerminados no está vacía, checar si el último de la listaTerminados es un hueco.
+        // si sí es hueco, le sumamos a su tiempo final el tiempo para el siguiente lote.
+        // si sí está vacía, o no es hueco, entonces creamos el hueco.
+        if (ultimoEsSalto()) {
+            Proceso ultimo = this.getCompletados().get(this.getCompletados().size() - 1);
+            ultimo.setTiempoTotal(ultimo.getTiempoTotal() + (tiempoEspera - this.duracion));
+            ultimo.setTiempoFinal(ultimo.getTiempoTotal());
+            this.duracion += tiempoEspera - this.duracion;
+        } else {
+            this.setEsVacio(true);
+            Proceso salto = new Proceso("Salto", tiempoEspera - this.duracion, 0);
+            salto.setTvc(0);
+            salto.setNumBloq(0);
+            salto.setTiempoTotal(salto.getTe());
+            salto.setTiempoInicial(this.duracion);
+            salto.setTiempoFinal(this.duracion + salto.getTe());
+            this.duracion += salto.getTe();
+            this.completados.add(salto);
+            System.out.println("Salto de " + salto.getTe() + "ms en  Micro: " + this.id + ", duración = " + this.getDuracion());
+        }
+    }
+
+    public boolean ultimoEsSalto(){
+        if (!this.getCompletados().isEmpty()) {
+            return (completados.get(completados.size()-1).getNombre() == "Salto");
+        } else {
+            return false;
+        }
+    }
+
+    public int calcularTvc(Proceso p) { //calculateTVC
+        if (p.getTe()%quantum == 0){       // no sobra tiempo. n-1 cambios.
+            return ((p.getTe()/quantum - 1)*tcc);
+        }
+        return (p.getTe()/quantum)*tcc;
+    }
+
+    public int calcularBloqueo(Proceso p) {
+        if (p.getTe()<=400){
+            return 2*tb;
+        } else if (p.getTe()<=600) {
+            return 3*tb;
+        } else if (p.getTe()<=800) {
+            return 4*tb;
+        } else{
+            return 5*tb;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Micro{" +
+                "id=" + id +
+                ", duración=" + duracion +
+                '}';
+    }
+
+
+
+    
     
 }

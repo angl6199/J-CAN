@@ -7,8 +7,8 @@ public class Proceso {
     private int tiempoEntrada; // entryTime
     private int tvc;
     private int tiempoTotal; // total
-    private int tiempoInicial; // Tinicial
-    private int tiempoFinal;
+    private int tiempoInicial; // tInicial
+    private int tiempoFinal;  //tFinal
 
     public Proceso(String nombre, int te, int tiempoEntrada) {
         this.nombre = nombre;
