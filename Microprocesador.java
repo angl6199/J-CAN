@@ -6,7 +6,7 @@ public class Microprocesador implements Comparable<Microprocesador>{
     private int tb; // block
     private int tcc; // context
     private int quantum;
-    private boolean esVacio;
+    private boolean esVacio; //isEmpty
     private ArrayList<Proceso> completados = new ArrayList<Proceso>(); // terminados
 
     public Microprocesador(int id, int tcc, int quantum, int tb) {

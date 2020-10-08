@@ -88,4 +88,7 @@ public class Proceso {
         this.tiempoFinal = tiempoFinal;
     }
    
+    public String toString() {
+        return nombre + " " + te + " " + tiempoEntrada;
+    }
 }
