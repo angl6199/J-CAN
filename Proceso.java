@@ -10,6 +10,8 @@ public class Proceso {
     private int tiempoInicial; // tInicial
     private int tiempoFinal;  //tFinal
 
+    
+
     public Proceso(String nombre, int te, int tiempoEntrada) {
         this.nombre = nombre;
         this.te = te;
