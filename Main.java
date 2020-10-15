@@ -84,14 +84,16 @@ public class Main extends JFrame {
             String nombre2 = "";
             int te = 0;
             int tiempoEntrada = 0;
+            int numBloq = 0;
 
             String[] temp = SepararConComa(linea);
             nombre2 = temp[0];
             te = Integer.parseInt(temp[1]);
             tiempoEntrada = Integer.parseInt(temp[2]);
+            numBloq = Integer.parseInt(temp[3]);
 
 
-            Proceso x = new Proceso(nombre2, te, tiempoEntrada);
+            Proceso x = new Proceso(nombre2, te, tiempoEntrada, numBloq);
             lista.add(x);
 
         }

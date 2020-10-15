@@ -12,10 +12,11 @@ public class Proceso {
 
     
 
-    public Proceso(String nombre, int te, int tiempoEntrada) {
+    public Proceso(String nombre, int te, int tiempoEntrada, int numBloq) {
         this.nombre = nombre;
         this.te = te;
         this.tiempoEntrada = tiempoEntrada;
+        this.numBloq = numBloq;
     }
 
     public String getNombre() {

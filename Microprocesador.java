@@ -93,10 +93,10 @@ public class Microprocesador implements Comparable<Microprocesador>{
             tiempoProceso += tcc;
             p.setTcc(tcc);
         }
-        tiempoProceso = tiempoProceso + p.getTe() + this.calcularTvc(p) + this.calcularBloqueo(p);
+        tiempoProceso = tiempoProceso + p.getTe() + this.calcularTvc(p) + p.getNumBloq()*tb;
         p.setTiempoTotal(tiempoProceso);
         p.setTvc(this.calcularTvc(p));
-        p.setNumBloq(this.calcularBloqueo(p));
+        p.setNumBloq(p.getNumBloq()*tb);
         p.setTiempoFinal(p.getTiempoInicial() + tiempoProceso);
 
         this.duracion += tiempoProceso;
@@ -117,7 +117,7 @@ public class Microprocesador implements Comparable<Microprocesador>{
             this.duracion += tiempoEspera - this.duracion;
         } else {
             this.setEsVacio(true);
-            Proceso salto = new Proceso("Salto", tiempoEspera - this.duracion, 0);
+            Proceso salto = new Proceso("Salto", tiempoEspera - this.duracion, 0,0);
             salto.setTvc(0);
             salto.setNumBloq(0);
             salto.setTiempoTotal(salto.getTe());
@@ -144,17 +144,7 @@ public class Microprocesador implements Comparable<Microprocesador>{
         return (p.getTe()/quantum)*tcc;
     }
 
-    public int calcularBloqueo(Proceso p) {
-        if (p.getTe()<=400){
-            return 2*tb;
-        } else if (p.getTe()<=600) {
-            return 3*tb;
-        } else if (p.getTe()<=800) {
-            return 4*tb;
-        } else{
-            return 5*tb;
-        }
-    }
+ 
 
     @Override
     public String toString() {
