@@ -111,6 +111,21 @@ public class Main extends JFrame {
       private Main()
       {
           super();
+
+          //Imagen de fondo
+          JLabel background;
+          setSize(650, 430);
+          setDefaultCloseOperation(EXIT_ON_CLOSE);
+          ImageIcon img = new ImageIcon("Background.jpg");
+
+          background = new JLabel("", img,JLabel.CENTER);
+          background.setBounds(0,0,1200,700);
+          add(background);
+
+          setVisible(true);
+
+    
+
           //Elementos de JPanel
           JButton boton = new JButton("Despachar");
           JLabel titulo = new JLabel("J-CAN");
@@ -163,9 +178,14 @@ public class Main extends JFrame {
           setSize(600, 400);
           setLayout(null);
           setVisible(true);
+<<<<<<< Updated upstream
           //getContentPane().setBackground(new Color(0, 0, 0));
+=======
+          //getContentPane().setBackground(new Color(115, 185, 255));
+>>>>>>> Stashed changes
           //Listeners
           boton.addActionListener(EnviarDatos);
+
       }
 
 
