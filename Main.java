@@ -11,6 +11,8 @@ public class Main extends JFrame {
     private JTextField quantumTF;
     private JTextField contextoTF;
     private JTextField bloqueoTF;
+    private ImageIcon image;
+    private JLabel label1;
 
     private ActionListener EnviarDatos = new ActionListener()
     {
@@ -112,17 +114,12 @@ public class Main extends JFrame {
       {
           super();
 
-          //Imagen de fondo
-          JLabel background;
-          setSize(650, 430);
-          setDefaultCloseOperation(EXIT_ON_CLOSE);
-          ImageIcon img = new ImageIcon("Background.jpg");
+          image = new ImageIcon(getClass().getResource("champs.jpg"));
+            label1 = new JLabel(image);
+            add(label1);
+            label1.setBounds(320,60,300,300);
 
-          background = new JLabel("", img,JLabel.CENTER);
-          background.setBounds(0,0,1200,700);
-          add(background);
-
-          setVisible(true);
+          
 
     
 
@@ -137,6 +134,7 @@ public class Main extends JFrame {
           quantumTF = new JTextField();
           contextoTF = new JTextField();
           bloqueoTF = new JTextField();
+          
   
           // Posicionamiento de los elementos
           titulo.setBounds(100, 25, 300, 60);
@@ -175,7 +173,7 @@ public class Main extends JFrame {
           add(bloqueoTF);
           add(boton);
           setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-          setSize(600, 400);
+          setSize(650, 400);
           setLayout(null);
           setVisible(true);
           //getContentPane().setBackground(new Color(0, 0, 0));
