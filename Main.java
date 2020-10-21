@@ -113,9 +113,6 @@ public class Main extends JFrame {
           //Elementos de JPanel
           JButton boton = new JButton("Despachar");
           JLabel titulo = new JLabel("J-CAN");
-          JLabel angel = new JLabel("Ángel Heredia Vázquez");
-          JLabel eric = new JLabel("Eric Jardón - A01376748");
-          JLabel alex = new JLabel("Alejandro Moreno - A01654319");
           JLabel micros = new JLabel("Microprocesadores");
           JLabel quantum = new JLabel("Quantum");
           JLabel contexto = new JLabel("Cambio de contexto");
@@ -126,11 +123,8 @@ public class Main extends JFrame {
           bloqueoTF = new JTextField();
   
           // Posicionamiento de los elementos
-          titulo.setBounds(50, 50, 300, 60);
-          angel.setBounds(330, 50, 200, 40);
-          eric.setBounds(330, 90, 200, 40);
-          alex.setBounds(330, 130, 240, 40);
-          micros.setBounds(50, 200, 100, 40);
+          titulo.setBounds(100, 25, 300, 60);
+          micros.setBounds(40, 100, 150, 40);
           quantum.setBounds(50, 240, 100, 40);
           contexto.setBounds(350, 200, 100, 40);
           bloqueo.setBounds(350, 240, 100, 40);
@@ -143,9 +137,6 @@ public class Main extends JFrame {
           //Asignación de fuentes
           Font fuente = new Font("Arial", Font.BOLD, 14);
           titulo.setFont(new Font("Arial", Font.BOLD, 30));
-          angel.setFont(fuente);
-          eric.setFont(fuente);
-          alex.setFont(fuente);
           micros.setFont(fuente);
           quantum.setFont(fuente);
           contexto.setFont(fuente);
@@ -157,9 +148,6 @@ public class Main extends JFrame {
   
           // Colocación de los elementos
           add(titulo);
-          add(angel);
-          add(eric);
-          add(alex);
           add(micros);
           add(quantum);
           add(contexto);
