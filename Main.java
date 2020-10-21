@@ -178,11 +178,8 @@ public class Main extends JFrame {
           setSize(600, 400);
           setLayout(null);
           setVisible(true);
-<<<<<<< Updated upstream
           //getContentPane().setBackground(new Color(0, 0, 0));
-=======
-          //getContentPane().setBackground(new Color(115, 185, 255));
->>>>>>> Stashed changes
+          
           //Listeners
           boton.addActionListener(EnviarDatos);
 
