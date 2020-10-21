@@ -31,10 +31,10 @@ public class Main extends JFrame {
                 }
 
                 ArrayList<Proceso> lista = LeerArchivo("procesos.txt");
-                System.out.println(micros);
-                System.out.println(quantum);
-                System.out.println(contexto);
-                System.out.println(bloqueo);
+                //System.out.println(micros);
+                //System.out.println(quantum);
+                //System.out.println(contexto);
+                //System.out.println(bloqueo);
                 Despachador x = new Despachador(lista, micros, contexto, quantum, bloqueo);
                 // Procesamiento de los datos
                 x.iniciarDespacho(); //process se refiere a la clase donde realizar toda la asignación

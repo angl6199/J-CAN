@@ -125,7 +125,7 @@ public class Microprocesador implements Comparable<Microprocesador>{
             salto.setTiempoFinal(this.duracion + salto.getTe());
             this.duracion += salto.getTe();
             this.completados.add(salto);
-            System.out.println("Salto de " + salto.getTe() + "ms en  Micro: " + this.id + ", duración = " + this.getDuracion());
+            //System.out.println("Salto de " + salto.getTe() + "ms en  Micro: " + this.id + ", duración = " + this.getDuracion());
         }
     }
 

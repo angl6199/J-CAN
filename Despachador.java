@@ -21,10 +21,11 @@ public class Despachador {
             Microprocesador m = new Microprocesador(i+1, cambioContexto, quantum, bloqueo);
             listaMicros.add(m);
         }
-
+        /*
         for(Microprocesador m : listaMicros){
             System.out.println(m);
         }
+        */
 
     }
 
@@ -54,11 +55,11 @@ public class Despachador {
         while (colaProcesos.size()!=0){
             // debe leer los tiempos de todos los micros y escoger el de menor tiempo, cuidando prioridad de id.
             // el de menor tiempo se le asigna y procesa el primer proceso en la cola.
-            System.out.println("Proceso " + colaProcesos.peek().getNombre() + " a:" + this.seleccionarMicro());
+            //System.out.println("Proceso " + colaProcesos.peek().getNombre() + " a:" + this.seleccionarMicro());
             this.seleccionarMicro().ejecutarProceso(colaProcesos.remove());
         }
         // en teoría ya acabamos los procesos en este punto. Se quedan no-vacíos por ahora.
-        System.out.println("Se terminó de procesar la tanda. ");
+        //System.out.println("Se terminó de procesar la tanda. ");
     }
 
     public void detectarSaltos(int nuevoInicio) { //nextStartTime
@@ -88,6 +89,7 @@ public class Despachador {
     public void imprimirTablas(){
         GUI it = new GUI(listaMicros);
         it.crearGUI(listaMicros);
+        /*
         for (Microprocesador m: listaMicros){
             System.out.println("Micro: " + m.getId());
             System.out.println("Proceso\t TCC\t TE \t TVC\t TB \t TT \t TI \t TF");
@@ -102,7 +104,7 @@ public class Despachador {
             }
             System.out.println("Tiempo total Micro " + m.getId() + " = " + m.getDuracion());
             System.out.println();
-        }
+        }*/
     }
 
 

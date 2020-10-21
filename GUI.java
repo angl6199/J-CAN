@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -14,19 +14,19 @@ public class GUI extends JPanel {
 
     public GUI(ArrayList<Microprocesador> micros) {
 
-        super(new GridLayout(1, 0));
+        super(new GridLayout(0, 1));
 
         ArrayList<Microprocesador> microsList = micros;
         ArrayList<Proceso> procesos = new ArrayList<>();
 
-        String[] columnNames = { "Proceso", "TCC", "TE", "TVC", "TB", "TT", "TI", "TF" };
+        String[] columnNames = { "PROCESO", "TCC", "TE", "TVC", "TB", "TT", "TI", "TF" };
 
         for (Microprocesador m : microsList) {
 
             String microId = Integer.toString(m.getId());
 
             JPanel panel = new JPanel();
-            panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Micro " + microId,
+            panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Microprocesador " + microId,
                     TitledBorder.CENTER, TitledBorder.TOP));
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
             procesos = m.getCompletados();
@@ -48,7 +48,7 @@ public class GUI extends JPanel {
                     tt = p.getTiempoTotal();
                     ti = p.getTiempoInicial();
                     tf = p.getTiempoFinal();
-                    Object[] tableRow = { "", "", "", "", "", tt, ti, tf }; // NOTA
+                    Object[] tableRow = { "", "", "", "", "", tt, ti, tf }; 
                     tableModel.addRow(tableRow);
                 }
             }
