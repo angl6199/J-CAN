@@ -64,7 +64,7 @@ public class GUI extends JPanel {
             JScrollPane scrollPane = new JScrollPane(table);
 
             panel.add(scrollPane);
-            panel.setBackground(new Color(115, 185, 255));
+            //panel.setBackground(new Color(115, 185, 255));
             add(panel);
         }
     }

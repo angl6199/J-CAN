@@ -45,6 +45,7 @@ public class Main extends JFrame {
             } catch (Exception e) {
                 // crear una alerta de swing de error;
                 JOptionPane.showMessageDialog(null,"Error en los valores ingresados.");
+                
             }
         }
     };
@@ -132,7 +133,7 @@ public class Main extends JFrame {
           quantumTF.setBounds(190, 250, 80, 30);
           contextoTF.setBounds(190,150, 80, 30);
           bloqueoTF.setBounds(190, 200, 80, 30);
-          boton.setBounds(100, 320, 80, 40);
+          boton.setBounds(100, 310, 80, 40);
   
           //Asignación de fuentes
           Font fuente = new Font("Times New Roman", Font.PLAIN, 14);
@@ -159,7 +160,7 @@ public class Main extends JFrame {
           add(bloqueoTF);
           add(boton);
           setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-          setSize(650, 430);
+          setSize(600, 400);
           setLayout(null);
           setVisible(true);
           //getContentPane().setBackground(new Color(0, 0, 0));
