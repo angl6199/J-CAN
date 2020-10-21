@@ -114,9 +114,9 @@ public class Main extends JFrame {
           JButton boton = new JButton("Despachar");
           JLabel titulo = new JLabel("J-CAN");
           JLabel micros = new JLabel("Microprocesadores");
-          JLabel quantum = new JLabel("Quantum");
+          JLabel quantum = new JLabel("Tiempo del quantum");
           JLabel contexto = new JLabel("Cambio de contexto");
-          JLabel bloqueo = new JLabel("Bloqueo");
+          JLabel bloqueo = new JLabel("Tiempo de bloqueo");
           microsTF = new JTextField();
           quantumTF = new JTextField();
           contextoTF = new JTextField();
@@ -125,18 +125,18 @@ public class Main extends JFrame {
           // Posicionamiento de los elementos
           titulo.setBounds(100, 25, 300, 60);
           micros.setBounds(40, 100, 150, 40);
-          quantum.setBounds(50, 240, 100, 40);
-          contexto.setBounds(350, 200, 100, 40);
-          bloqueo.setBounds(350, 240, 100, 40);
-          microsTF.setBounds(150, 200, 100, 35);
-          quantumTF.setBounds(150, 240, 100, 35);
-          contextoTF.setBounds(450,200, 100, 35);
-          bloqueoTF.setBounds(450, 240, 100, 35);
-          boton.setBounds(300, 300, 100, 40);
+          quantum.setBounds(40, 250, 150, 40);
+          contexto.setBounds(40, 150, 150, 40);
+          bloqueo.setBounds(40, 200, 150, 40);
+          microsTF.setBounds(190, 100, 80, 30);
+          quantumTF.setBounds(190, 250, 80, 30);
+          contextoTF.setBounds(190,150, 80, 30);
+          bloqueoTF.setBounds(190, 200, 80, 30);
+          boton.setBounds(100, 320, 80, 40);
   
           //Asignación de fuentes
-          Font fuente = new Font("Arial", Font.BOLD, 14);
-          titulo.setFont(new Font("Arial", Font.BOLD, 30));
+          Font fuente = new Font("Times New Roman", Font.PLAIN, 14);
+          titulo.setFont(new Font("Times New Roman", Font.BOLD, 30));
           micros.setFont(fuente);
           quantum.setFont(fuente);
           contexto.setFont(fuente);
@@ -145,6 +145,7 @@ public class Main extends JFrame {
           quantumTF.setFont(fuente);
           contextoTF.setFont(fuente);
           bloqueoTF.setFont(fuente);
+          boton.setFont(fuente);
   
           // Colocación de los elementos
           add(titulo);
@@ -161,7 +162,7 @@ public class Main extends JFrame {
           setSize(650, 430);
           setLayout(null);
           setVisible(true);
-          getContentPane().setBackground(new Color(115, 185, 255));
+          //getContentPane().setBackground(new Color(0, 0, 0));
           //Listeners
           boton.addActionListener(EnviarDatos);
       }
