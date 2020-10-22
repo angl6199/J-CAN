@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class Microprocesador implements Comparable<Microprocesador>{
+public class Microprocesador implements Comparable<Microprocesador> {
     private int id;
-    private int duracion; // tiempoTotal
-    private int tb; // block
-    private int tcc; // context
+    private int duracion;
+    private int tb;
+    private int tcc;
     private int quantum;
-    private boolean esVacio; //isEmpty
-    private ArrayList<Proceso> completados = new ArrayList<Proceso>(); // terminados
+    private boolean esVacio;
+    private ArrayList<Proceso> completados = new ArrayList<Proceso>();
 
     public Microprocesador(int id, int tcc, int quantum, int tb) {
         this.id = id;
@@ -20,15 +20,15 @@ public class Microprocesador implements Comparable<Microprocesador>{
 
     @Override
     public int compareTo(Microprocesador o) {
-        if (this.duracion>o.duracion){
+        if (this.duracion > o.duracion) {
             return 1;
         }
-        if (this.duracion<o.duracion){
+        if (this.duracion < o.duracion) {
             return -1;
         }
         return 0;
     }
-    
+
     public int getId() {
         return this.id;
     }
@@ -84,32 +84,39 @@ public class Microprocesador implements Comparable<Microprocesador>{
     public void setCompletados(ArrayList<Proceso> completados) {
         this.completados = completados;
     }
-    
-    public void ejecutarProceso(Proceso p) { //process
-        // calcula tiempos, actualiza tiempo total de micro, guarda tiempo inicial y final de proceso, añade proceso a terminados
+
+    public void ejecutarProceso(Proceso p) {
+
+        /*
+         * Actualiza el tiempo total del microprocesador, guarda su tiempo inicial y
+         * final del proceso. Añade el proceso a la lista de terminados.
+         */
         p.setTiempoInicial(this.duracion);
-        int tiempoProceso = 0; //pTime
-        if (!esVacio){
+        int tiempoProceso = 0; // pTime
+        if (!esVacio) {
             tiempoProceso += tcc;
             p.setTcc(tcc);
         }
-        tiempoProceso = tiempoProceso + p.getTe() + this.calcularTvc(p) + p.getNumBloq()*tb;
+        tiempoProceso = tiempoProceso + p.getTe() + this.calcularTvc(p) + p.getNumBloq() * tb;
         p.setTiempoTotal(tiempoProceso);
         p.setTvc(this.calcularTvc(p));
-        p.setNumBloq(p.getNumBloq()*tb);
+        p.setNumBloq(p.getNumBloq() * tb);
         p.setTiempoFinal(p.getTiempoInicial() + tiempoProceso);
 
         this.duracion += tiempoProceso;
         this.completados.add(p);
         this.setEsVacio(false);
 
-        
     }
 
-    public void esperar(int tiempoEspera) { //wait  y timeToWait
-        // si la listaTerminados no está vacía, checar si el último de la listaTerminados es un hueco.
-        // si sí es hueco, le sumamos a su tiempo final el tiempo para el siguiente lote.
-        // si sí está vacía, o no es hueco, entonces creamos el hueco.
+    public void esperar(int tiempoEspera) {
+
+        /*
+         * Si la lista de completados no se encuetra vacía, revisa si el último de la
+         * lista es un salto. En caso de que sea un hueco, se le suma al tiempo final el
+         * tiempo para la siguiente tanda. En caso de que esté vacío o no sea un salto,
+         * se crea el salto.
+         */
         if (ultimoEsSalto()) {
             Proceso ultimo = this.getCompletados().get(this.getCompletados().size() - 1);
             ultimo.setTiempoTotal(ultimo.getTiempoTotal() + (tiempoEspera - this.duracion));
@@ -117,7 +124,7 @@ public class Microprocesador implements Comparable<Microprocesador>{
             this.duracion += tiempoEspera - this.duracion;
         } else {
             this.setEsVacio(true);
-            Proceso salto = new Proceso("Salto", tiempoEspera - this.duracion, 0,0);
+            Proceso salto = new Proceso("Salto", tiempoEspera - this.duracion, 0, 0);
             salto.setTvc(0);
             salto.setNumBloq(0);
             salto.setTiempoTotal(salto.getTe());
@@ -125,37 +132,28 @@ public class Microprocesador implements Comparable<Microprocesador>{
             salto.setTiempoFinal(this.duracion + salto.getTe());
             this.duracion += salto.getTe();
             this.completados.add(salto);
-            //System.out.println("Salto de " + salto.getTe() + "ms en  Micro: " + this.id + ", duración = " + this.getDuracion());
+
         }
     }
 
-    public boolean ultimoEsSalto(){
+    public boolean ultimoEsSalto() {
         if (!this.getCompletados().isEmpty()) {
-            return (completados.get(completados.size()-1).getNombre() == "Salto");
+            return (completados.get(completados.size() - 1).getNombre() == "Salto");
         } else {
             return false;
         }
     }
 
-    public int calcularTvc(Proceso p) { //calculateTVC
-        if (p.getTe()%quantum == 0){       // no sobra tiempo. n-1 cambios.
-            return ((p.getTe()/quantum - 1)*tcc);
+    public int calcularTvc(Proceso p) {
+        if (p.getTe() % quantum == 0) { // Determinar si sobra tiempo
+            return ((p.getTe() / quantum - 1) * tcc);
         }
-        return (p.getTe()/quantum)*tcc;
+        return (p.getTe() / quantum) * tcc;
     }
-
- 
 
     @Override
     public String toString() {
-        return "Micro{" +
-                "id=" + id +
-                ", duración=" + duracion +
-                '}';
+        return "Micro{" + "id=" + id + ", duración=" + duracion + '}';
     }
 
-
-
-    
-    
 }

@@ -1,16 +1,14 @@
 public class Proceso {
 
-    private String nombre; // id
-    private int te; // exeTime
+    private String nombre; 
+    private int te; 
     private int tcc = 0;
-    private int numBloq; // tb
-    private int tiempoEntrada; // entryTime
+    private int numBloq; 
+    private int tiempoEntrada; 
     private int tvc;
-    private int tiempoTotal; // total
-    private int tiempoInicial; // tInicial
-    private int tiempoFinal;  //tFinal
-
-    
+    private int tiempoTotal; 
+    private int tiempoInicial; 
+    private int tiempoFinal; 
 
     public Proceso(String nombre, int te, int tiempoEntrada, int numBloq) {
         this.nombre = nombre;
@@ -90,7 +88,7 @@ public class Proceso {
     public void setTiempoFinal(int tiempoFinal) {
         this.tiempoFinal = tiempoFinal;
     }
-   
+
     public String toString() {
         return nombre + " " + te + " " + tiempoEntrada;
     }

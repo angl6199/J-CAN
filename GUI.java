@@ -26,8 +26,8 @@ public class GUI extends JPanel {
             String microId = Integer.toString(m.getId());
 
             JPanel panel = new JPanel();
-            panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Microprocesador " + microId,
-                    TitledBorder.CENTER, TitledBorder.TOP));
+            panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
+                    "Microprocesador " + microId, TitledBorder.CENTER, TitledBorder.TOP));
             DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
             procesos = m.getCompletados();
             String proceso;
@@ -48,7 +48,7 @@ public class GUI extends JPanel {
                     tt = p.getTiempoTotal();
                     ti = p.getTiempoInicial();
                     tf = p.getTiempoFinal();
-                    Object[] tableRow = { "", "", "", "", "", tt, ti, tf }; 
+                    Object[] tableRow = { "", "", "", "", "", tt, ti, tf };
                     tableModel.addRow(tableRow);
                 }
             }
@@ -64,18 +64,17 @@ public class GUI extends JPanel {
             JScrollPane scrollPane = new JScrollPane(table);
 
             panel.add(scrollPane);
-            //panel.setBackground(new Color(115, 185, 255));
             add(panel);
         }
     }
 
     public void crearGUI(ArrayList<Microprocesador> microsListCreate) {
-        //Create and set up the window.
+        // Creación de la ventana
         JFrame frame = new JFrame("Despachador");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         GUI newContentPane = new GUI(microsListCreate);
-        newContentPane.setOpaque(true); //content panes must be opaque
+        newContentPane.setOpaque(true);
         JScrollPane scrollPane = new JScrollPane(newContentPane);
         frame.setContentPane(scrollPane);
         frame.pack();
