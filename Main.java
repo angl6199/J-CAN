@@ -35,10 +35,10 @@ public class Main extends JFrame {
                 x.imprimirTablas();
 
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor revisa tu input.");
+                JOptionPane.showMessageDialog(null, "Por favor revisa tu input (1).");
             } catch (Exception e) {
                 // crear una alerta de swing de error;
-                JOptionPane.showMessageDialog(null, "Por favor revisa tu input.");
+                JOptionPane.showMessageDialog(null, "Por favor revisa tu input (2).");
 
             }
         }
